@@ -1,11 +1,11 @@
 node {  
     stage('Build') { 
-        echo "In build stage"
+        echo "In build stages"
     }
     stage('Test') { 
-        echo "In Test stage"
+        echo "In Test stages"
     }
     stage('Deploy') { 
-        echo "In Deploy stage" 
+        echo "In Deploy stages" 
     }
 }
