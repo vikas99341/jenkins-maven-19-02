@@ -21,7 +21,3 @@ mvn archetype:generate -DgroupId=com.sample.webproject -DartifactId=jenkins-mave
 
 /var/lib/jenkins/workspace
 
-
-
-
-A -- > B > C - D ==e ==t
