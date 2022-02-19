@@ -1,0 +1,27 @@
+jenkins - up and running 
+Maven == Build Automation tool
+
+source code == > compiled == > artifacts 
+
+clean --> validate --> compile -- > package -- > deploy 
+
+mvn compile
+
+mvn archetype:generate -DgroupId=com.sample.webproject -DartifactId=jenkins-maven-19-02 -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
+.
+├── pom.xml
+└── src
+    └── main
+        ├── resources
+        └── webapp
+            ├── index.jsp
+            └── WEB-INF
+                └── web.xml
+
+/var/lib/jenkins/workspace
+
+
+
+
+A -- > B > C - D
