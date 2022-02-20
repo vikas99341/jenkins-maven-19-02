@@ -1,0 +1,81 @@
+sudo amazon-linux-extras install ansible2
+cd /etc/ansible
+edit your hosts file
+create a new user
+useradd ansadmin
+passwd ansadmin
+visudo 
+added ansadmin ALL=(ALL)   ALL
+save and exit
+
+cd /etc/ssh
+nano sshd_config = PasswordAuthentication yes
+service sshd restart
+
+pvt + public ======== public key shared == when you want to connect validated against pvt key
+(invitation card + list) 
+
+ssh-keygen == id_rsa + ida_rsa.pub 
+ssh-copy-id ansadmin@<ip of other machine> == > connection established
+
+ssh 'ansadmin@172.31.82.146'
+
+cd /etc/ansible
+ansible -i hosts -m ping all
+
+
+-	rw- r--r-- 
+d	rwx r-x r-x 
+        u   g   o
+r read
+w write
+x execute
+
+ansible webserver -m shell -a "uptime"
+ansible webserver -m shell -a "free -h "
+
+ansible webserver -m copy -a "src=/etc/ansible/file1.txt dest=/tmp/file1.txt"
+
+yum install httpd -y 
+ansible all -m yum -a "name=httpd state=present" -b -kK
+
+service httpd start
+ansible all -m service -a "name=httpd state=started" -b -kK
+
+
+playbook:
+=========
+---
+- name: install and start Apache webserver
+  hosts: webserver
+
+  tasks:
+       - name: install httpd
+         yum: name=httpd  state=latest
+         become: yes
+       - name: check httpd status
+         service: name=httpd state=started
+
+=================================
+---
+- name: install and start Apache webserver
+  hosts: webserver
+
+  tasks:
+       - name: install httpd
+         yum: name=httpd  state=latest
+         become: yes
+         notify: check httpd status
+
+  handlers:
+       - name: check httpd status
+         service: name=httpd state=started
+
+A--- >  B---- >C
+O/P --> I/P --> O/P --> INPUT C
+
+
+idompotent 
+
+
+if changes are done the execute commands in handler 
