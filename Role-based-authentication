@@ -1,0 +1,14 @@
+yum install java-1.8* -y
+yum update -y
+sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo yum upgrade
+yum install jenkins -y
+service jenkins start
+systemctl enable jenkins
+service jenkins status
+cat /var/lib/jenkins/secrets/initialAdminPassword
+sudo amazon-linux-extras install java-openjdk11
+alternatives --config java
+java -version
+service jenkins restart
