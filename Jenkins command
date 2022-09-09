@@ -1,3 +1,17 @@
+Jenkins Installation with java 11:
+==================================
+sudo amazon-linux-extras install java-openjdk11
+java -version
+alternatives --config java
+cat /etc/os-release
+sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo yum upgrade
+sudo yum install jenkins
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+
 jenkins - up and running 
 Maven == Build Automation tool
 
