@@ -7,9 +7,9 @@ java 11 + maven 3.8.6 + jenkins
 
 2. install maven
 ==> cd /opt
-==> wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
-==> tar -xvzf apache-maven-3.8.6-bin.tar.gz
-==> mv apache-maven-3.8.6 maven
+==> wget https://dlcdn.apache.org/maven/maven-3/3.9.2/binaries/apache-maven-3.9.2-bin.tar.gz
+==> tar -xvzf apache-maven-3.9.2-bin.tar.gz
+==> mv apache-maven-3.9.2 maven
 ==> cd maven/bin == > ./mvn 
 3. make it global
 ==> cd ==> ls -la ==> nano .bash_profile
