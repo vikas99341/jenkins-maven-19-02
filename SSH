@@ -12,7 +12,7 @@ login as jenkinsadmin on your master machine
 useradd jenkinsadmin
 passwd jenkinsadmin = pass123
 
-visudo == jenkinsadmin ALL=(ALL)       ALL
+jenkinsadmin  ALL=(ALL)       NOPASSWD: ALL
 cd /etc/ssh - nano sshd_config == > PasswordAuthentication yes
 service sshd reload/service sshd restart
 su jenkinsadmin 
