@@ -1,17 +1,29 @@
-java 11 + maven 3.8.6 + jenkins
-===============================
-1. Install java11
-==> sudo amazon-linux-extras install java-openjdk11
-==> find / -name java-11*
-/usr/lib/jvm/java-11-openjdk-11.0.13.0.8-1.amzn2.0.3.x86_64
+Take Amazon-linux-2023 latest version and install java + jenkins + maven 
+========================================================================
+1. Upgrade your system (optional - If available)
+yum update -y 
+dnf upgrade --releasever=2023.3.20240205
 
-2. install maven
-==> cd /opt
-==> wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
-==> tar -xvzf apache-maven-3.9.4-bin.tar.gz
-==>  mv apache-maven-3.9.4 maven
-==> cd maven/bin == > ./mvn 
-3. make it global
+2. Install java -- > Check java -version
+sudo dnf install java-11-amazon-corretto-devel
+
+3. Install Jenkins using the below commands
+    1  sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    2  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+	3  sudo yum install jenkins
+    4  sudo systemctl daemon-reload
+	5  service jenkins start
+	6  systemctl enable jenkins
+
+4. Install maven for build
+    1. cd /opt
+	2. wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.zip
+	3. unzip apache-maven-3.9.6-bin.zip
+	4. rm -rf apache-maven-3.9.6-bin.zip
+	5. mv apache-maven-3.9.6/ maven
+	
+5. Configure path variable " echo $PATH" to add java_home  and maven_home
+
 ==> cd ==> ls -la ==> nano .bash_profile
 =======================================================================
 # .bash_profile
@@ -22,7 +34,7 @@ fi
 
 M2_HOME=/opt/maven
 M2=/opt/maven/bin
-JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.20.0.8-1.amzn2.0.1.x86_64
+JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto.x86_64
 
 # User specific environment and startup programs
 
@@ -32,13 +44,3 @@ export PATH
 =======================================================================
 ==> source .bash_profile
 ==> echo $PATH
-3. Install Jenkins for java11
-
-sudo wget -O /etc/yum.repos.d/jenkins.repo \
-    https://pkg.jenkins.io/redhat-stable/jenkins.repo
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-sudo yum upgrade
-sudo yum install jenkins
-sudo systemctl daemon-reload
-service jenkins start
-systemctl enable jenkins
