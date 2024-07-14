@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('scm-checkout') {
+            steps {
+                echo 'scm-checkout'
+            }
+        }
+        stage('build') {
+            steps {
+                echo 'build'
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'deploy'
+            }
+        }
+    }
+}
